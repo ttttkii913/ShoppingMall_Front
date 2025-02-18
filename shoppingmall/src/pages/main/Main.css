@@ -1,0 +1,309 @@
+.main {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.main .overlap-wrapper {
+    background-color: #fff;
+    height: 832px;
+    width: 1280px;
+}
+.main .overlap {
+    height: 832px;
+    position: relative;
+    width: 536px;
+    margin: 0 auto;
+}
+.main .rectangle {
+    background-color: #fff;
+    border-radius: 3px;
+    height: 35px;
+    left: 139px;
+    position: absolute;
+    top: 669px;
+    width: 113px;
+}
+
+.main .div {
+    background-color: #f5f5f5;
+    height: 832px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 532px;
+}
+.main .group {
+    height: 135px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 536px;
+}
+
+.main .overlap-group {
+    background-color: #000;
+    height: 135px;
+    position: relative;
+    width: 532px;
+}
+.main .text-wrapper {
+    color: #ffffff;
+    font-family: "Maven Pro-Medium", Helvetica;
+    font-size: 17px;
+    font-weight: 500;
+    left: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 22px;
+    white-space: nowrap;
+    width: 114ps;
+}
+.main .group-2 {
+    height: 22px;  /* 이미지의 높이와 맞춰줍니다 */
+    left: 467px;
+    position: absolute;
+    top: 22px;
+    width: 48px;  /* group-2의 넓이를 두 이미지가 들어갈 수 있도록 충분히 좁게 설정 */
+}
+
+.main .notification-instance {
+    height: 22px;
+    position: absolute;
+    top: 0;
+    width: 20px;
+}
+
+.main .outline-general {
+    height: 22px;
+    left: 30px;  
+    position: absolute;
+    top: 0;
+    width: 20px;
+}
+
+.main .overlap-group-wrapper {
+    height: 32px;
+    left: 16px;
+    position: absolute;
+    top: 52px;
+    width: 501px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main .div-wrapper {
+    height: 32px;
+    width: 499px;
+    position: absolute;
+    background-color: #fff;
+     /* 왼쪽 정렬 */
+     display: flex;
+     align-items: center;
+     justify-content: flex-start;
+     
+     position: absolute;
+     padding-left: 10px; /* 왼쪽 여백 추가 */
+}
+
+.main .input {
+    color: #acabac;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    width: auto;
+    text-align: left;
+    border: none;
+    outline: none;
+}
+
+.main .text-wrapper-3 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 12px;
+    font-weight: 400;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+    width: 74px;
+}
+
+.main .overlap-group-2 {
+    height: 16px;
+    left: 233px;
+    position: absolute;
+    top: 0;
+    width: 178px;
+}
+
+.main .group-wrapper {
+    background-color: #ffffff;
+    height: 48px;
+    left: 0;
+    position: absolute;
+    top: 769px;
+    width: 532px;
+}
+
+.main .group-3 {
+    height: 19px;
+    left: 87px;
+    position: relative;
+    top: 14px;
+    width: 421px;
+}
+
+.main .text-wrapper-2 {
+    color: #ffffff;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 12px;
+    font-weight: 600;
+    left: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 99px;
+    width: 400px;
+}
+
+.main .image {
+    height: 529px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 135px;
+    width: 532px;
+}
+.main .text-wrapper-7 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 12px;
+    font-weight: 400;
+    left: 83px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+    width: 47px;
+}
+
+.main .group-4 {
+    height: 79px;
+    left: 90px;
+    position: absolute;
+    top: 677px;
+    width: 334px;
+}
+
+.main .text-wrapper-6 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 12px;
+    font-weight: 400;
+    left: 148px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 0;
+    width: 84px;
+}
+
+.main .text-wrapper-4 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 12px;
+    font-weight: 400;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 0;
+    width: 87px;
+}
+
+.main .text-wrapper-5 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 12px;
+    font-weight: 400;
+    left: 65px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 0;
+    width: 113px;
+}
+.main .group-8 {
+    height: 35px;
+    left: 115px;
+    position: absolute;
+    top: 0;
+    width: 104px;
+}
+
+.main .group-9 {
+    height: 35px;
+    left: 56px;
+    position: absolute;
+    top: 44px;
+    width: 104px;
+}
+
+.main .text-wrapper-8 {
+    color: #000000;
+    font-family: "Inter-Medium", Helvetica;
+    font-size: 12.5px;
+    font-weight: 500;
+    left: 12px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 10px;
+    white-space: nowrap;
+    width: 79px;
+}
+
+.main .group-7 {
+    height: 35px;
+    left: 178px;
+    position: absolute;
+    top: 44px;
+    width: 104px;
+}
+
+.main .group-5 {
+    height: 35px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 104px;
+}
+
+.main .group-6 {
+    height: 35px;
+    width: 106px;
+}
+
+.main .overlap-group-3 {
+    background-color: #ffffff;
+    border-radius: 3px;
+    height: 35px;
+    position: relative;
+    width: 104px;
+}
+.main .group-10 {
+    height: 35px;
+    left: 230px;
+    position: absolute;
+    top: 0;
+    width: 104px;
+}
