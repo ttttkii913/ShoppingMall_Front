@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Join.css";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/navigator/Navbar";
 
 export const Join = () => {
@@ -11,6 +12,7 @@ export const Join = () => {
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [birthday, setBirthday] = useState("");
+    const navigate = useNavigate();
 
 // 회원가입 핸들러
 const handleSubmit = async (event) => {
@@ -32,7 +34,7 @@ const handleSubmit = async (event) => {
         console.log("회원가입 성공:", response.data);
         
         alert("회원가입에 성공하였습니다! 로그인 페이지로 이동합니다.");
-        window.location.href = "/login";
+        navigate("/login");
 
     } catch (error) {
         console.error("회원가입 실패:", error);
