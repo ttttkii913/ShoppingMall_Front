@@ -64,7 +64,7 @@ const requestAuthCode = async () => {
     }
 
     try {
-        await axios.post(`${API_BASE_URL}/email/send`, { email });
+        await axios.post(`${API_BASE_URL}/email/send?email=${encodeURIComponent(email)}`);
         alert("이메일로 인증 번호가 전송되었습니다.");
     } catch (error) {
         console.error("이메일 인증 요청 실패:", error);

@@ -8,7 +8,7 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export const Login = () => {
 
-    const [userId, setUserId] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
@@ -18,10 +18,11 @@ export const Login = () => {
 
         try {
             // 백엔드에 로그인 요청
-            const response = await axios.post(`${API_BASE_URL}/user/login`, {
-                userId,
-                password
-            });
+            const response = await axios.post(
+                `${API_BASE_URL}/user/login`,
+                { email, password },
+                { headers: { "Content-Type": "application/json" } }
+            );
 
             const { status, message, data } = response.data;
 
@@ -61,9 +62,9 @@ export const Login = () => {
                     <div className="text-wrapper3"> 
                         <input
                             type="text"
-                            placeholder="아이디"
-                            value={userId}
-                            onChange={(e) => setUserId(e.target.value)}
+                            placeholder="이메일"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />                    
                     </div>
                 </div>
