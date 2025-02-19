@@ -31,7 +31,7 @@ export const Login = () => {
                 const token = data.accessToken;
                 localStorage.setItem("accessToken", token);
                 alert("로그인 성공!");
-                navigate("/main"); 
+                navigate("/"); 
             } else {
                 alert(message || "아이디 또는 비밀번호가 틀립니다.");
             }
