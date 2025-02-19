@@ -7,23 +7,29 @@ import Navbar from "../../components/navigator/Navbar";
 export const Join = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [authCode, setAuthCode] = useState("");
+    const [authNum, setAuthNum] = useState("");
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [birthday, setBirthday] = useState("");
+    const [isEmailVerified, setIsEmailVerified] = useState(false);
+    const [sentAuthNum, setSentAuthNum] = useState("");
     const navigate = useNavigate();
 
 // 회원가입 핸들러
 const handleSubmit = async (event) => {
     event.preventDefault(); 
+    
+    if (!isEmailVerified) {
+        alert("이메일 인증을 완료해주세요.");
+        return;
+    }
 
     // 백엔드 API에 데이터 전송
     try {
         const response = await axios.post("http://localhost:8080/join", {
             name,
             email,
-            authCode,
             password,
             phone,
             address,
@@ -39,6 +45,34 @@ const handleSubmit = async (event) => {
     } catch (error) {
         console.error("회원가입 실패:", error);
         alert("회원가입에 실패하였습니다. 다시 시도해주세요.");
+    }
+};
+
+
+// 이메일 인증 번호 요청 핸들러
+const requestAuthCode = async () => {
+    if (!email) {
+        alert("이메일을 입력해주세요.");
+        return;
+    }
+
+    try {
+        const response = await axios.post("http://localhost:8080/send-email-auth", { email });
+        setSentAuthNum(response.data.authCode); // 서버에서 인증 번호를 받아 저장
+        alert("이메일로 인증 번호가 전송되었습니다.");
+    } catch (error) {
+        console.error("이메일 인증 요청 실패:", error);
+        alert("이메일 인증 요청에 실패하였습니다. 다시 시도해주세요.");
+    }
+};
+
+// 인증 코드 확인 핸들러
+const verifyAuthCode = () => {
+    if (authNum === sentAuthNum) {
+        setIsEmailVerified(true);
+        alert("이메일 인증이 완료되었습니다.");
+    } else {
+        alert("인증 코드가 올바르지 않습니다. 다시 확인해주세요.");
     }
 };
 
@@ -72,12 +106,15 @@ const handleSubmit = async (event) => {
                             placeholder="이메일"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            disabled={isEmailVerified}
                         />                    
                     </div>
                 </div>
 
                 <div className="group5">
-                    <div className="text-wrapper5">이메일 인증 번호 요청
+                    <div className="text-wrapper5">
+                        <button type="button"onClick={requestAuthCode} disabled={isEmailVerified}>
+                        {isEmailVerified ? "이메일 인증 완료" : "이메일 인증 번호 요청"}</button>
                     </div>
                 </div>
 
@@ -86,9 +123,18 @@ const handleSubmit = async (event) => {
                         <input
                             type="text"
                             placeholder="이메일 인증 번호"
-                            value={authCode}
-                            onChange={(e) => setAuthCode(e.target.value)}
+                            value={authNum}
+                            onChange={(e) => setAuthNum(e.target.value)}
+                            disabled={isEmailVerified}
                         />                    
+                    </div>
+                </div>
+
+                <div className="group5">
+                    <div className="text-wrapper5">
+                        <button type="button" onClick={verifyAuthCode} disabled={isEmailVerified}>
+                            {isEmailVerified ? "인증 완료" : "인증 확인"}
+                        </button>
                     </div>
                 </div>
 

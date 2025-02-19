@@ -81,3 +81,8 @@ input[type="text"], input[type="password"] {
     margin-bottom: 7px;
     margin-left: 180px;
 }
+
+button[type="button"] {
+    font-size: 10px;
+    margin-top: 0;
+}
