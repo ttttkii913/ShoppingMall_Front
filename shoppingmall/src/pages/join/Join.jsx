@@ -37,18 +37,24 @@ const handleSubmit = async (event) => {
             birthday,
         });
 
-        // 응답 처리
-        console.log("회원가입 성공:", response.data);
+        const { status, message, data } = response.data;
         
-        alert("회원가입에 성공하였습니다! 로그인 페이지로 이동합니다.");
-        navigate("/login");
-
+        // 응답 처리
+        if (status === "success") {
+            console.log("회원가입 성공:", message);
+            console.log("가입한 사용자 정보:", data);
+            alert(`${message}\n이름: ${data.name}\n이메일: ${data.email}`);
+            navigate("/login");
+        } else {
+            console.error("회원가입 실패:", message);
+            alert(`회원가입 실패: ${message}`);
+        }
+        
     } catch (error) {
         console.error("회원가입 실패:", error);
         alert("회원가입에 실패하였습니다. 다시 시도해주세요.");
     }
 };
-
 
 // 이메일 인증 번호 요청 핸들러
 const requestAuthCode = async () => {

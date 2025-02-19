@@ -23,12 +23,16 @@ export const Login = () => {
                 password
             });
 
+            const { status, message, data } = response.data;
+
             // 로그인 성공 시 알림
-            if (response.data.success) {
+            if (status === "success") {
+                const token = data.accessToken;
+                localStorage.setItem("accessToken", token);
                 alert("로그인 성공!");
                 navigate("/main"); 
             } else {
-                alert("아이디 또는 비밀번호가 틀립니다.");
+                alert(message || "아이디 또는 비밀번호가 틀립니다.");
             }
         } catch (error) {
             console.error("로그인 실패:", error);
