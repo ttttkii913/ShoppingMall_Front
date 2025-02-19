@@ -34,6 +34,11 @@ export const Login = () => {
         }
     };
 
+    // 회원가입 이동 핸들러
+    const handleJoin = () => {
+        navigate("/join");
+    };
+
     return (
         <div className="main">
             <div className="overlap-wrapper">
@@ -73,7 +78,7 @@ export const Login = () => {
                 </div>
 
                 <div className="group3">
-                    <div className="text-wrapper4">회원가입</div>
+                    <div className="text-wrapper4" onClick={handleJoin}>회원가입</div>
                 </div>
             </div>
 
