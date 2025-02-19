@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import Navbar from "../../components/navigator/Navbar";
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 export const Login = () => {
 
     const [userId, setUserId] = useState("");
@@ -16,7 +18,7 @@ export const Login = () => {
 
         try {
             // 백엔드에 로그인 요청
-            const response = await axios.post("http://localhost:8080/login", {
+            const response = await axios.post(`${API_BASE_URL}/user/login`, {
                 userId,
                 password
             });

@@ -4,6 +4,8 @@ import "./Join.css";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/navigator/Navbar";
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 export const Join = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -13,7 +15,6 @@ export const Join = () => {
     const [address, setAddress] = useState("");
     const [birthday, setBirthday] = useState("");
     const [isEmailVerified, setIsEmailVerified] = useState(false);
-    const [sentAuthNum, setSentAuthNum] = useState("");
     const navigate = useNavigate();
 
 // 회원가입 핸들러
@@ -27,7 +28,7 @@ const handleSubmit = async (event) => {
 
     // 백엔드 API에 데이터 전송
     try {
-        const response = await axios.post("http://localhost:8080/join", {
+        const response = await axios.post(`${API_BASE_URL}/user/join`, {
             name,
             email,
             password,
@@ -57,8 +58,7 @@ const requestAuthCode = async () => {
     }
 
     try {
-        const response = await axios.post("http://localhost:8080/send-email-auth", { email });
-        setSentAuthNum(response.data.authCode); // 서버에서 인증 번호를 받아 저장
+        await axios.post(`${API_BASE_URL}/email/send`, { email });
         alert("이메일로 인증 번호가 전송되었습니다.");
     } catch (error) {
         console.error("이메일 인증 요청 실패:", error);
@@ -67,12 +67,27 @@ const requestAuthCode = async () => {
 };
 
 // 인증 코드 확인 핸들러
-const verifyAuthCode = () => {
-    if (authNum === sentAuthNum) {
-        setIsEmailVerified(true);
-        alert("이메일 인증이 완료되었습니다.");
-    } else {
-        alert("인증 코드가 올바르지 않습니다. 다시 확인해주세요.");
+const verifyAuthCode = async () => {
+    if (!authNum) {
+        alert("인증 번호를 입력해주세요.");
+        return;
+    }
+
+    try {
+        const response = await axios.post(`${API_BASE_URL}/email/check`, {
+            email,
+            authNum,
+        });
+        
+        if (response.data.success) {
+            setIsEmailVerified(true);
+            alert("이메일 인증이 완료되었습니다.");
+        } else {
+            alert("인증 번호가 올바르지 않습니다. 다시 확인해주세요.");
+        }
+    } catch (error) {
+        console.error("이메일 인증 확인 실패:", error);
+        alert("이메일 인증 확인에 실패하였습니다. 다시 시도해주세요.");
     }
 };
 
